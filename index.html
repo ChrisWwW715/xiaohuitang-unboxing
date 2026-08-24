@@ -404,7 +404,6 @@ textarea{min-height:170px;resize:vertical;line-height:1.55}
 }
 .handoff .ht{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--steel);text-transform:uppercase}
 .handoff p{margin:8px 0 0;font-size:14px}
-.handoff .cn{font-family:var(--mono);font-size:11.5px;color:var(--steel);margin-top:6px}
 .modal-actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
 .modal-actions .mbtn{min-width:110px}
 .mbtn{
@@ -452,7 +451,6 @@ footer{
     <p class="eyebrow">Participatory Design Probe · Field Instrument No.1</p>
     <h1>The Unboxing<br><span class="drop">Lab</span></h1>
     <p class="lede">A five-minute probe into what happens between the thrill of tearing the foil and the shelf where the figure ends up. Log one blind box you have actually opened.</p>
-    <p class="cn">一次关于盲盒消费的参与式探针。记录你真实拆过的一只盒，从心跳到落灰。</p>
     <p class="scroll-hint"><i></i> START WITH THE BOX</p>
   </header>
 
@@ -461,7 +459,6 @@ footer{
     <div class="step-head">
       <h2><b>01</b> / Unpack Your Capsule</h2>
       <p class="sub">Tap the mystery box to start the unboxing inquiry.</p>
-      <p class="sub-cn">点击盲盒，开始这次拆盒调查</p>
     </div>
 
     <div class="stage" id="stage">
@@ -498,7 +495,6 @@ footer{
     <div class="step-head">
       <h2><b>02</b> / Trace Your Dopamine</h2>
       <p class="sub">Rate the same purchase at three moments. The curve below redraws as you drag.</p>
-      <p class="sub-cn">为同一次购买的三个时刻打分，下方曲线会实时重绘</p>
     </div>
 
     <div class="card">
@@ -526,7 +522,7 @@ footer{
           <div class="slider-top">
             <div>
               <div class="slider-name">Pre-Unbox Hype</div>
-              <div class="slider-when">BEFORE PAYING &amp; BEFORE TEARING · 购买与拆封前</div>
+              <div class="slider-when">BEFORE PAYING AND BEFORE TEARING</div>
             </div>
             <div class="slider-val" id="v1">5</div>
           </div>
@@ -538,7 +534,7 @@ footer{
           <div class="slider-top">
             <div>
               <div class="slider-name">Instant Reveal Peak</div>
-              <div class="slider-when">THE SECOND THE FOIL SPLITS · 撕开铝箔瞬间</div>
+              <div class="slider-when">THE SECOND THE FOIL SPLITS</div>
             </div>
             <div class="slider-val" id="v2">5</div>
           </div>
@@ -550,7 +546,7 @@ footer{
           <div class="slider-top">
             <div>
               <div class="slider-name">24 Hours Later</div>
-              <div class="slider-when">ONCE THE HIGH SETTLES · 24小时后沉淀期</div>
+              <div class="slider-when">ONCE THE HIGH SETTLES</div>
             </div>
             <div class="slider-val" id="v3">5</div>
           </div>
@@ -609,7 +605,6 @@ footer{
     <div class="step-head">
       <h2><b>03</b> / Sort It Into A Pocket</h2>
       <p class="sub">Where is your unwanted or duplicate figure resting right now? Pick the one pocket that is honest.</p>
-      <p class="sub-cn">你闲置或抽中的重复款现在在哪里？选择最诚实的那一个口袋</p>
     </div>
 
     <div class="zones" id="zones" role="group" aria-label="Choose where the figure rests">
@@ -618,28 +613,28 @@ footer{
         <span class="zn">ZONE 01</span>
         <span class="zt">The Drawer<br>(Limbo)</span>
         <span class="zd">Hidden away in storage boxes, dark closets, or under desks.</span>
-        <span class="zc">收进抽屉 · 眼不见为净</span>
+        <span class="zc">OUT OF SIGHT · STILL OWNED</span>
       </button>
       <button class="zone" id="z2" data-zone="Dust Collector" aria-pressed="false">
         <span class="badge">✓ SORTED</span>
         <span class="zn">ZONE 02</span>
         <span class="zt">Dust<br>Collector</span>
         <span class="zd">Sitting on a display shelf, but completely forgotten or ignored.</span>
-        <span class="zc">摆在架上 · 却再没看过一眼</span>
+        <span class="zc">ON DISPLAY · NEVER LOOKED AT</span>
       </button>
       <button class="zone" id="z3" data-zone="Passed Along" aria-pressed="false">
         <span class="badge">✓ SORTED</span>
         <span class="zn">ZONE 03</span>
         <span class="zt">Passed<br>Along</span>
         <span class="zd">Gifted to friends, traded, or dumped onto secondhand apps.</span>
-        <span class="zc">送人 · 换娃 · 挂上二手平台</span>
+        <span class="zc">GIFTED · TRADED · RESOLD</span>
       </button>
       <button class="zone" id="z4" data-zone="The Bin (Landfill)" aria-pressed="false">
         <span class="badge">✓ SORTED</span>
         <span class="zn">ZONE 04</span>
         <span class="zt">The Bin<br>(Landfill)</span>
         <span class="zd">Broken, lost, or tossed directly into plastic waste.</span>
-        <span class="zc">损坏 · 遗失 · 直接进了垃圾桶</span>
+        <span class="zc">BROKEN · LOST · BINNED</span>
       </button>
     </div>
   </section>
@@ -649,18 +644,17 @@ footer{
     <div class="step-head">
       <h2><b>04</b> / Unboxing Confession</h2>
       <p class="sub">Pick a prompt, then write the sentence you would not post online.</p>
-      <p class="sub-cn">选一个引导问题，写下你不会发到社交平台的那句话</p>
     </div>
 
     <div class="card">
       <div class="prompts" id="prompts" role="group" aria-label="Choose a confession prompt">
         <button class="prompt" data-p="Why did you really scan to pay in that split second?" aria-pressed="false">
           Why did you really scan to pay in that split second?
-          <small>你到底为什么在那一秒刷卡付款？</small>
+          <small>THE MOMENT OF PAYMENT</small>
         </button>
         <button class="prompt" data-p="What went through your mind when you realized it wasn't what you wanted?" aria-pressed="false">
           What went through your mind when you realized it wasn't what you wanted?
-          <small>当你发现没抽中想要的款式时，第一句内心独白是什么？</small>
+          <small>THE MOMENT OF THE MISS</small>
         </button>
       </div>
 
@@ -675,7 +669,6 @@ footer{
     <div class="step-head">
       <h2><b>05</b> / File It To The Archive</h2>
       <p class="sub">Check the record, then file it. Nothing is uploaded anywhere.</p>
-      <p class="sub-cn">核对记录后归档，数据不会上传</p>
     </div>
 
     <div class="receipt" id="receipt"></div>
@@ -998,8 +991,7 @@ footer{
 
     $('handoff').innerHTML =
       '<div class="ht">One thing left</div>' +
-      '<p>Write your confession on a card and post it into the <b>' + escapeHtml(entry.z) + '</b> pocket on the board. That board is the archive.</p>' +
-      '<p class="cn">把你的告白写在卡片上，投进展板上对应的口袋。展板才是真正的档案。</p>';
+      '<p>Write your confession on a card and post it into the <b>' + escapeHtml(entry.z) + '</b> pocket on the board. That board is the archive.</p>';
 
     $('veil').classList.add('on');
     $('closeModal').focus();
