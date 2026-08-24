@@ -1,0 +1,1062 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE UNBOXING LAB — A Participatory Probe into Blind Box Consumption</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Inter+Tight:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#101014;
+  --paper:#F6F6F2;
+  --pink:#FF2E88;
+  --lemon:#FFD400;
+  --mint:#00E5B0;
+  --steel:#78828F;
+  --slate:#2A2F38;
+  --line:rgba(16,16,20,.14);
+
+  --display:'Archivo','Helvetica Neue',Arial,sans-serif;
+  --body:'Inter Tight','Helvetica Neue',Arial,sans-serif;
+  --mono:'Space Mono',ui-monospace,Menlo,monospace;
+
+  --accent:var(--pink);
+  --pad:clamp(18px,5vw,44px);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--body);
+  color:var(--ink);
+  background:#E9EBEE;
+  background-image:linear-gradient(180deg,#FFEEF6 0%,#FFF8DF 16%,#F0F6F2 42%,#E6E9EC 66%,#D9DDE2 84%,#CFD4DA 100%);
+  background-attachment:fixed;
+  line-height:1.5;
+  overflow-x:hidden;
+}
+
+/* ============ SHELL ============ */
+.wrap{max-width:920px;margin:0 auto;padding:0 var(--pad) 120px}
+
+/* ============ PROGRESS RAIL ============ */
+.rail{
+  position:sticky;top:0;z-index:60;
+  backdrop-filter:blur(14px);
+  background:rgba(246,246,242,.72);
+  border-bottom:1px solid var(--line);
+}
+.rail-in{
+  max-width:920px;margin:0 auto;padding:10px var(--pad);
+  display:flex;align-items:center;gap:14px;
+}
+.rail-tag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  color:var(--steel);white-space:nowrap;
+}
+.rail-track{display:flex;gap:6px;flex:1;min-width:0}
+.rail-seg{
+  flex:1;height:6px;border-radius:99px;background:rgba(16,16,20,.1);
+  overflow:hidden;position:relative;
+}
+.rail-seg span{
+  position:absolute;inset:0;transform:scaleX(0);transform-origin:left;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1);
+}
+.rail-seg.on span{transform:scaleX(1)}
+.rail-seg:nth-child(1) span{background:var(--pink)}
+.rail-seg:nth-child(2) span{background:var(--lemon)}
+.rail-seg:nth-child(3) span{background:var(--mint)}
+.rail-seg:nth-child(4) span{background:var(--steel)}
+.rail-seg:nth-child(5) span{background:var(--ink)}
+
+/* ============ HERO ============ */
+.hero{padding:clamp(48px,11vw,110px) 0 clamp(30px,6vw,54px)}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--steel);margin:0 0 20px;
+}
+.hero h1{
+  font-family:var(--display);
+  font-variation-settings:'wdth' 118,'wght' 850;
+  font-size:clamp(40px,10.5vw,96px);
+  line-height:.92;letter-spacing:-.025em;
+  margin:0;text-transform:uppercase;
+}
+.hero h1 .drop{
+  display:block;
+  background:linear-gradient(96deg,var(--pink) 0%,#FF7A2F 38%,var(--lemon) 68%,var(--steel) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lede{
+  margin:26px 0 0;max-width:56ch;font-size:clamp(15px,2.1vw,18px);color:#3A3F48;
+}
+.hero .cn{
+  margin:10px 0 0;max-width:44ch;font-size:13px;color:var(--steel);
+}
+.scroll-hint{
+  margin-top:36px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  color:var(--steel);display:flex;align-items:center;gap:9px;
+}
+.scroll-hint i{display:block;width:26px;height:1px;background:var(--steel);font-style:normal}
+
+/* ============ SECTIONS ============ */
+.step{padding:clamp(38px,8vw,76px) 0;border-top:1px solid var(--line)}
+.step-head{margin-bottom:clamp(20px,4vw,34px)}
+.step h2{
+  font-family:var(--display);
+  font-variation-settings:'wdth' 108,'wght' 800;
+  font-size:clamp(22px,4.6vw,38px);
+  line-height:1.02;letter-spacing:-.015em;margin:0;text-transform:uppercase;
+}
+.step h2 b{color:var(--accent);font-weight:inherit}
+.step .sub{margin:12px 0 0;color:#42474F;max-width:54ch;font-size:15px}
+.step .sub-cn{margin:5px 0 0;color:var(--steel);font-size:12.5px;font-family:var(--mono)}
+
+#s1{--accent:var(--pink)}
+#s2{--accent:#FF8A00}
+#s3{--accent:var(--mint)}
+#s4{--accent:var(--steel)}
+#s5{--accent:var(--ink)}
+
+/* ============ STEP 1 — CAPSULE ============ */
+.stage{
+  position:relative;height:clamp(320px,58vw,420px);
+  display:grid;place-items:center;
+  border-radius:28px;
+  background:
+    radial-gradient(120% 90% at 50% 12%,rgba(255,46,136,.16),transparent 62%),
+    linear-gradient(180deg,#FFFFFF 0%,#FFF3F8 100%);
+  border:1px solid rgba(255,46,136,.2);
+  overflow:hidden;
+}
+.stage::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:34%;
+  background:linear-gradient(180deg,transparent,rgba(255,46,136,.07));
+  pointer-events:none;
+}
+.scene{perspective:900px;position:relative;z-index:2}
+.capsule{
+  appearance:none;border:0;background:none;padding:0;cursor:pointer;
+  display:block;position:relative;
+  width:clamp(148px,38vw,190px);
+  transform-style:preserve-3d;
+  animation:wob 3.4s ease-in-out infinite;
+}
+@keyframes wob{
+  0%,100%{transform:rotate(-2.2deg) translateY(0)}
+  50%{transform:rotate(2.2deg) translateY(-9px)}
+}
+.box-body{
+  position:relative;height:clamp(148px,38vw,190px);border-radius:16px;
+  background:linear-gradient(150deg,#FF4E9C 0%,#FF2E88 46%,#E2126D 100%);
+  box-shadow:0 26px 44px -16px rgba(226,18,109,.55),inset -14px 0 26px -14px rgba(0,0,0,.35),inset 14px 0 22px -16px rgba(255,255,255,.6);
+  display:grid;place-items:center;
+}
+.box-body::before{
+  content:'';position:absolute;left:0;right:0;top:46%;height:2px;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.85) 0 7px,transparent 7px 14px);
+  opacity:.55;
+}
+.box-mark{
+  font-family:var(--display);font-variation-settings:'wdth' 118,'wght' 900;
+  font-size:clamp(46px,12vw,62px);color:rgba(255,255,255,.94);
+  text-shadow:0 2px 0 rgba(0,0,0,.15);line-height:1;
+}
+.box-lid{
+  position:absolute;left:-5px;right:-5px;top:-24px;height:34px;border-radius:12px;
+  background:linear-gradient(180deg,#FFE066 0%,#FFD400 55%,#E9B800 100%);
+  box-shadow:0 10px 18px -8px rgba(0,0,0,.4);
+  transform-origin:50% 100%;
+  transition:transform .6s cubic-bezier(.3,1.5,.4,1),opacity .5s ease;
+}
+.foil{
+  position:absolute;left:6px;right:6px;top:-3px;height:15px;border-radius:99px;
+  background:linear-gradient(90deg,#C9CED6,#F4F6F8,#AEB6C0,#EDEFF2);
+  transform-origin:left center;
+  transition:transform .5s ease,opacity .4s ease;
+}
+.capsule[aria-pressed="true"]{animation:none;transform:none}
+.capsule[aria-pressed="true"] .box-lid{transform:rotateX(-128deg) translateY(-4px)}
+.capsule[aria-pressed="true"] .foil{transform:scaleX(0) rotate(-14deg);opacity:0}
+.capsule[aria-pressed="true"] .box-mark{opacity:.25;transition:opacity .4s}
+
+.figure{
+  position:absolute;left:50%;bottom:42%;width:110px;margin-left:-55px;
+  opacity:0;transform:translateY(28px) scale(.7);
+  transition:opacity .5s ease .18s,transform .7s cubic-bezier(.2,1.4,.35,1) .18s;
+  pointer-events:none;
+}
+.stage.open .figure{opacity:1;transform:translateY(-22px) scale(1)}
+.tap-hint{
+  position:absolute;bottom:20px;left:0;right:0;text-align:center;
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--pink);
+  text-transform:uppercase;
+}
+.stage.open .tap-hint{color:var(--steel)}
+.spark{position:absolute;width:7px;height:7px;border-radius:99px;pointer-events:none;z-index:3}
+
+.reveal-note{
+  margin-top:22px;padding:16px 18px;border-radius:14px;
+  border:1px dashed rgba(255,46,136,.4);background:rgba(255,255,255,.6);
+  font-family:var(--mono);font-size:13px;color:var(--ink);
+  opacity:0;transform:translateY(8px);transition:.5s ease;
+}
+.reveal-note.show{opacity:1;transform:none}
+.reveal-note em{color:var(--pink);font-style:normal}
+
+/* ============ FORM PRIMITIVES ============ */
+.card{
+  background:rgba(255,255,255,.66);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:clamp(18px,4vw,26px);
+}
+.grid2{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}}
+label.fl{
+  display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--steel);margin-bottom:8px;
+}
+input[type=text],textarea{
+  width:100%;font-family:var(--body);font-size:15.5px;color:var(--ink);
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;outline:none;transition:border-color .2s,box-shadow .2s;
+}
+input[type=text]:focus,textarea:focus{
+  border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent);
+}
+.toggle{display:flex;gap:10px;flex-wrap:wrap}
+.tg{
+  appearance:none;border:1px solid var(--line);background:#fff;cursor:pointer;
+  border-radius:99px;padding:11px 18px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.06em;color:var(--steel);transition:.2s;
+}
+.tg:hover{border-color:var(--ink);color:var(--ink)}
+.tg[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tg.win[aria-pressed="true"]{background:var(--mint);color:#062B22;border-color:var(--mint)}
+.tg.lose[aria-pressed="true"]{background:var(--slate);color:#fff;border-color:var(--slate)}
+
+/* ============ SLIDERS ============ */
+.slider-row{padding:18px 0;border-bottom:1px solid var(--line)}
+.slider-row:last-of-type{border-bottom:0;padding-bottom:4px}
+.slider-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.slider-name{font-family:var(--display);font-variation-settings:'wdth' 100,'wght' 700;font-size:16px;letter-spacing:-.01em}
+.slider-when{font-family:var(--mono);font-size:10.5px;color:var(--steel);letter-spacing:.1em}
+.slider-val{
+  font-family:var(--mono);font-weight:700;font-size:22px;
+  min-width:2.6ch;text-align:right;
+}
+.ends{display:flex;justify-content:space-between;gap:12px;margin-top:6px}
+.ends span{font-family:var(--mono);font-size:10px;color:var(--steel)}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:26px;background:transparent;
+  margin:8px 0 0;cursor:grab;
+}
+input[type=range]:active{cursor:grabbing}
+input[type=range]::-webkit-slider-runnable-track{
+  height:8px;border-radius:99px;
+  background:linear-gradient(90deg,#D7DBE0,#D7DBE0);
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:26px;height:26px;margin-top:-9px;border-radius:99px;
+  background:#fff;border:4px solid var(--dot,var(--pink));
+  box-shadow:0 4px 12px -3px rgba(0,0,0,.35);transition:transform .12s;
+}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.12)}
+input[type=range]::-moz-range-track{height:8px;border-radius:99px;background:#D7DBE0}
+input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border-radius:99px;background:#fff;
+  border:4px solid var(--dot,var(--pink));box-shadow:0 4px 12px -3px rgba(0,0,0,.35);
+}
+#r1{--dot:var(--pink)} #r2{--dot:#FF8A00} #r3{--dot:var(--steel)}
+
+/* ============ CHART ============ */
+.chartbox{
+  margin-top:20px;border-radius:20px;overflow:hidden;
+  border:1px solid var(--line);background:linear-gradient(180deg,#FFFFFF,#F2F4F6);
+}
+.chart-head{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:14px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap;
+}
+.chart-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--steel);text-transform:uppercase}
+.decay{font-family:var(--mono);font-size:12.5px;font-weight:700}
+.decay b{padding:3px 9px;border-radius:99px;background:var(--ink);color:#fff;margin-left:6px}
+.decay.up b{background:var(--mint);color:#052B22}
+svg.traj{display:block;width:100%;height:auto}
+.chart-foot{
+  padding:11px 18px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:10.5px;color:var(--steel);
+  display:flex;gap:16px;flex-wrap:wrap;align-items:center;
+}
+.key{display:inline-flex;align-items:center;gap:6px}
+.key i{width:16px;height:3px;border-radius:9px;display:block;font-style:normal}
+
+/* ============ STEP 3 — POCKETS ============ */
+.zones{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+@media(max-width:640px){.zones{grid-template-columns:1fr}}
+.zone{
+  position:relative;text-align:left;cursor:pointer;
+  border:1px solid var(--line);border-radius:18px;
+  background:var(--zbg,#fff);color:var(--zfg,var(--ink));
+  padding:20px 18px 22px;
+  transition:transform .35s cubic-bezier(.2,.9,.3,1),box-shadow .35s,filter .35s,opacity .35s;
+  box-shadow:0 10px 22px -18px rgba(16,16,20,.6);
+  overflow:hidden;
+}
+.zone:hover{transform:translateY(-4px);box-shadow:0 18px 30px -20px rgba(16,16,20,.7)}
+.zone .zn{font-family:var(--mono);font-size:10px;letter-spacing:.18em;opacity:.62;display:block;margin-bottom:9px}
+.zone .zt{font-family:var(--display);font-variation-settings:'wdth' 106,'wght' 800;font-size:19px;letter-spacing:-.01em;text-transform:uppercase;display:block}
+.zone .zd{font-size:13.2px;margin-top:8px;opacity:.78;line-height:1.42}
+.zone .zc{font-family:var(--mono);font-size:11px;margin-top:9px;opacity:.55}
+.zone .badge{
+  position:absolute;top:12px;right:12px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+  background:var(--ink);color:#fff;border-radius:99px;padding:5px 10px;
+  opacity:0;transform:translateY(-8px) scale(.9);transition:.3s;
+}
+.zone[aria-pressed="true"]{
+  transform:translateY(12px);
+  box-shadow:inset 0 14px 20px -14px rgba(0,0,0,.75),0 2px 0 rgba(0,0,0,.08);
+  border-color:currentColor;
+}
+.zone[aria-pressed="true"] .badge{opacity:1;transform:none}
+.zones.picked .zone:not([aria-pressed="true"]){opacity:.42;filter:saturate(.35)}
+#z1{--zbg:#E7E4F2;--zfg:#332C4A}
+#z2{--zbg:#EFEBE2;--zfg:#4A4437}
+#z3{--zbg:#D9F7EE;--zfg:#0B4738}
+#z4{--zbg:#2A2F38;--zfg:#DDE1E6}
+#z4 .badge{background:#fff;color:#151A20}
+
+/* ============ STEP 4 — CONFESSION ============ */
+.prompts{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.prompt{
+  text-align:left;cursor:pointer;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:14px 16px;transition:.2s;font-family:var(--body);
+  color:var(--ink);font-size:14.6px;line-height:1.45;
+}
+.prompt:hover{border-color:var(--ink);transform:translateX(3px)}
+.prompt small{display:block;font-family:var(--mono);font-size:11px;color:var(--steel);margin-top:5px}
+.prompt[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.prompt[aria-pressed="true"] small{color:rgba(255,255,255,.62)}
+textarea{min-height:170px;resize:vertical;line-height:1.55}
+.count{
+  display:flex;justify-content:space-between;margin-top:8px;
+  font-family:var(--mono);font-size:10.5px;color:var(--steel);
+}
+.count.warn{color:var(--pink)}
+
+/* ============ STEP 5 — SUBMIT ============ */
+.receipt{
+  font-family:var(--mono);font-size:12px;color:#3A3F48;
+  border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.6);
+  padding:16px 18px;margin-bottom:20px;
+}
+.receipt div{display:flex;justify-content:space-between;gap:14px;padding:5px 0}
+.receipt div+div{border-top:1px dotted var(--line)}
+.receipt span:last-child{color:var(--ink);text-align:right}
+.submit{
+  width:100%;cursor:pointer;border:0;border-radius:16px;
+  background:var(--ink);color:#fff;
+  font-family:var(--mono);font-size:14px;letter-spacing:.14em;
+  padding:22px 20px;transition:background .4s ease,transform .18s,color .4s;
+}
+.submit:hover{transform:translateY(-2px)}
+.submit:disabled{cursor:not-allowed;transform:none}
+.submit.loading{background:var(--steel)}
+.submit.done{background:#00A97A;color:#fff}
+.legal{margin-top:12px;font-family:var(--mono);font-size:10.5px;color:var(--steel);line-height:1.6}
+
+/* ============ MODAL ============ */
+.veil{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;
+  background:rgba(16,16,20,.6);backdrop-filter:blur(6px);
+  opacity:0;pointer-events:none;transition:opacity .35s;
+}
+.veil.on{opacity:1;pointer-events:auto}
+.modal{
+  width:min(520px,100%);max-height:88vh;overflow:auto;
+  background:var(--paper);border-radius:24px;padding:clamp(22px,5vw,32px);
+  transform:translateY(18px) scale(.97);transition:.4s cubic-bezier(.2,1.2,.3,1);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.6);
+}
+.veil.on .modal{transform:none}
+.modal h3{
+  font-family:var(--display);font-variation-settings:'wdth' 112,'wght' 850;
+  font-size:clamp(23px,5.4vw,32px);margin:14px 0 10px;text-transform:uppercase;line-height:1.02;
+}
+.modal p{font-size:14.5px;color:#3A3F48;margin:0 0 8px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 4px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
+.stat b{display:block;font-family:var(--mono);font-size:22px;line-height:1.1}
+.stat small{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--steel);text-transform:uppercase}
+.bars{margin-top:16px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-family:var(--mono);font-size:10.5px}
+.bar-row .nm{width:118px;color:var(--steel);flex:none}
+.bar-row .tr{flex:1;height:9px;border-radius:99px;background:rgba(16,16,20,.09);overflow:hidden}
+.bar-row .tr i{display:block;height:100%;border-radius:99px;transition:width .8s cubic-bezier(.2,.9,.3,1)}
+.handoff{
+  margin-top:18px;padding:15px 16px;border-radius:14px;
+  border:1px dashed var(--line);background:#fff;
+}
+.handoff .ht{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--steel);text-transform:uppercase}
+.handoff p{margin:8px 0 0;font-size:14px}
+.handoff .cn{font-family:var(--mono);font-size:11.5px;color:var(--steel);margin-top:6px}
+.modal-actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.modal-actions .mbtn{min-width:110px}
+.mbtn{
+  flex:1;min-width:140px;cursor:pointer;border-radius:12px;padding:14px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;border:1px solid var(--ink);
+  background:var(--ink);color:#fff;transition:.2s;
+}
+.mbtn.ghost{background:transparent;color:var(--ink)}
+.mbtn:hover{opacity:.82}
+
+footer{
+  border-top:1px solid var(--line);padding:26px 0 0;margin-top:20px;
+  font-family:var(--mono);font-size:10.5px;color:var(--steel);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:6px}
+.err{animation:shake .45s}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}
+  40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.06s!important}
+}
+</style>
+
+<div class="rail">
+  <div class="rail-in">
+    <div class="rail-tag">PROBE PROGRESS</div>
+    <div class="rail-track">
+      <div class="rail-seg" id="p1"><span></span></div>
+      <div class="rail-seg" id="p2"><span></span></div>
+      <div class="rail-seg" id="p3"><span></span></div>
+      <div class="rail-seg" id="p4"><span></span></div>
+      <div class="rail-seg" id="p5"><span></span></div>
+    </div>
+    <div class="rail-tag" id="railCount">0 / 5</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Participatory Design Probe · Field Instrument No.1</p>
+    <h1>The Unboxing<br><span class="drop">Lab</span></h1>
+    <p class="lede">A five-minute probe into what happens between the thrill of tearing the foil and the shelf where the figure ends up. Log one blind box you have actually opened.</p>
+    <p class="cn">一次关于盲盒消费的参与式探针。记录你真实拆过的一只盒，从心跳到落灰。</p>
+    <p class="scroll-hint"><i></i> START WITH THE BOX</p>
+  </header>
+
+  <!-- ================= STEP 1 ================= -->
+  <section class="step" id="s1">
+    <div class="step-head">
+      <h2><b>01</b> / Unpack Your Capsule</h2>
+      <p class="sub">Tap the mystery box to start the unboxing inquiry.</p>
+      <p class="sub-cn">点击盲盒，开始这次拆盒调查</p>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="scene">
+        <button class="capsule" id="capsule" aria-pressed="false" aria-label="Open the mystery box">
+          <div class="box-body">
+            <div class="box-mark">?</div>
+            <div class="box-lid"></div>
+            <div class="foil"></div>
+          </div>
+        </button>
+      </div>
+      <svg class="figure" viewBox="0 0 100 130" aria-hidden="true">
+        <g fill="none" stroke="#101014" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+          <path d="M50 8c-17 0-27 12-27 27 0 10 4 17 9 21h36c5-4 9-11 9-21C77 20 67 8 50 8z" fill="rgba(255,255,255,.85)"/>
+          <circle cx="39" cy="34" r="3.2" fill="#101014"/>
+          <circle cx="61" cy="34" r="3.2" fill="#101014"/>
+          <path d="M44 44c3 3 9 3 12 0"/>
+          <path d="M34 58h32c6 0 10 5 10 11v30c0 6-4 10-10 10H34c-6 0-10-4-10-10V69c0-6 4-11 10-11z" fill="rgba(255,255,255,.85)"/>
+          <path d="M24 74c-6 1-9 6-9 12s3 10 9 11M76 74c6 1 9 6 9 12s-3 10-9 11"/>
+          <path d="M38 109v13M62 109v13"/>
+        </g>
+      </svg>
+      <p class="tap-hint" id="tapHint">TAP TO TEAR THE SEAL</p>
+    </div>
+
+    <div class="reveal-note" id="revealNote">
+      <em>Box unveiled.</em> What did you feel the moment you pulled it? Keep that feeling — you will need it for the next three sliders.
+    </div>
+  </section>
+
+  <!-- ================= STEP 2 ================= -->
+  <section class="step" id="s2">
+    <div class="step-head">
+      <h2><b>02</b> / Trace Your Dopamine</h2>
+      <p class="sub">Rate the same purchase at three moments. The curve below redraws as you drag.</p>
+      <p class="sub-cn">为同一次购买的三个时刻打分，下方曲线会实时重绘</p>
+    </div>
+
+    <div class="card">
+      <div class="grid2">
+        <div>
+          <label class="fl" for="series">Blind Box Series / Character Name</label>
+          <input type="text" id="series" placeholder="Skullpanda, Labubu, Molly…" autocomplete="off">
+        </div>
+        <div>
+          <label class="fl" for="spend">Spend Amount</label>
+          <input type="text" id="spend" placeholder="$22" inputmode="decimal" autocomplete="off">
+        </div>
+      </div>
+
+      <div style="margin-top:18px">
+        <label class="fl">Hit Target?</label>
+        <div class="toggle" role="group" aria-label="Did you get the figure you wanted">
+          <button class="tg win" id="hitYes" aria-pressed="false">[ YES / JACKPOT ]</button>
+          <button class="tg lose" id="hitNo" aria-pressed="false">[ NO / UNWANTED ]</button>
+        </div>
+      </div>
+
+      <div style="margin-top:24px">
+        <div class="slider-row">
+          <div class="slider-top">
+            <div>
+              <div class="slider-name">Pre-Unbox Hype</div>
+              <div class="slider-when">BEFORE PAYING &amp; BEFORE TEARING · 购买与拆封前</div>
+            </div>
+            <div class="slider-val" id="v1">5</div>
+          </div>
+          <input type="range" id="r1" min="1" max="10" step="1" value="5" aria-label="Pre-unbox hype, 1 to 10">
+          <div class="ends"><span>1 · ROUTINE / IMPULSE</span><span>10 · HEART RACING</span></div>
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-top">
+            <div>
+              <div class="slider-name">Instant Reveal Peak</div>
+              <div class="slider-when">THE SECOND THE FOIL SPLITS · 撕开铝箔瞬间</div>
+            </div>
+            <div class="slider-val" id="v2">5</div>
+          </div>
+          <input type="range" id="r2" min="1" max="10" step="1" value="5" aria-label="Instant reveal peak, 1 to 10">
+          <div class="ends"><span>1 · INSTANT LETDOWN</span><span>10 · PURE EUPHORIA</span></div>
+        </div>
+
+        <div class="slider-row">
+          <div class="slider-top">
+            <div>
+              <div class="slider-name">24 Hours Later</div>
+              <div class="slider-when">ONCE THE HIGH SETTLES · 24小时后沉淀期</div>
+            </div>
+            <div class="slider-val" id="v3">5</div>
+          </div>
+          <input type="range" id="r3" min="1" max="10" step="1" value="5" aria-label="Twenty four hours later, 1 to 10">
+          <div class="ends"><span>1 · BUYER'S REMORSE</span><span>10 · TREASURED KEEPSAKE</span></div>
+        </div>
+      </div>
+
+      <div class="chartbox">
+        <div class="chart-head">
+          <div class="chart-title">Live Dopamine Trajectory</div>
+          <div class="decay" id="decayOut">DECAY FROM PEAK <b>0.0</b></div>
+        </div>
+        <svg class="traj" id="traj" viewBox="0 0 620 300" role="img" aria-label="Dopamine trajectory chart">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#FF2E88"/>
+              <stop offset="48%" stop-color="#FF8A00"/>
+              <stop offset="100%" stop-color="#78828F"/>
+            </linearGradient>
+            <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF2E88" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#78828F" stop-opacity=".02"/>
+            </linearGradient>
+            <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#78828F" stroke-width="3" opacity=".45"/>
+            </pattern>
+          </defs>
+
+          <g id="grid"></g>
+          <line x1="60" y1="228" x2="590" y2="228" stroke="#101014" stroke-opacity=".28" stroke-width="1"/>
+
+          <rect id="residue" x="60" y="230" width="530" height="0" fill="url(#hatch)"/>
+          <text id="residueLabel" x="66" y="248" font-family="Space Mono, monospace" font-size="10" fill="#78828F" letter-spacing="1.4" opacity="0">PLASTIC RESIDUE — VALUE LOST AFTER 24H</text>
+
+          <path id="area" fill="url(#fillGrad)" d=""/>
+          <path id="line" fill="none" stroke="url(#lineGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d=""/>
+
+          <g id="pts"></g>
+          <g id="xlabels" font-family="Space Mono, monospace" font-size="11" fill="#78828F" text-anchor="middle" letter-spacing="1.2">
+            <text x="105" y="266">PRE-UNBOX</text>
+            <text x="325" y="266">REVEAL PEAK</text>
+            <text x="545" y="266">+24 HOURS</text>
+          </g>
+        </svg>
+        <div class="chart-foot">
+          <span class="key"><i style="background:linear-gradient(90deg,#FF2E88,#78828F)"></i> YOUR CURVE</span>
+          <span class="key"><i style="background:repeating-linear-gradient(45deg,#78828F 0 3px,transparent 3px 6px)"></i> VALUE LOST AFTER 24H</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STEP 3 ================= -->
+  <section class="step" id="s3">
+    <div class="step-head">
+      <h2><b>03</b> / Sort It Into A Pocket</h2>
+      <p class="sub">Where is your unwanted or duplicate figure resting right now? Pick the one pocket that is honest.</p>
+      <p class="sub-cn">你闲置或抽中的重复款现在在哪里？选择最诚实的那一个口袋</p>
+    </div>
+
+    <div class="zones" id="zones" role="group" aria-label="Choose where the figure rests">
+      <button class="zone" id="z1" data-zone="The Drawer (Limbo)" aria-pressed="false">
+        <span class="badge">✓ SORTED</span>
+        <span class="zn">ZONE 01</span>
+        <span class="zt">The Drawer<br>(Limbo)</span>
+        <span class="zd">Hidden away in storage boxes, dark closets, or under desks.</span>
+        <span class="zc">收进抽屉 · 眼不见为净</span>
+      </button>
+      <button class="zone" id="z2" data-zone="Dust Collector" aria-pressed="false">
+        <span class="badge">✓ SORTED</span>
+        <span class="zn">ZONE 02</span>
+        <span class="zt">Dust<br>Collector</span>
+        <span class="zd">Sitting on a display shelf, but completely forgotten or ignored.</span>
+        <span class="zc">摆在架上 · 却再没看过一眼</span>
+      </button>
+      <button class="zone" id="z3" data-zone="Passed Along" aria-pressed="false">
+        <span class="badge">✓ SORTED</span>
+        <span class="zn">ZONE 03</span>
+        <span class="zt">Passed<br>Along</span>
+        <span class="zd">Gifted to friends, traded, or dumped onto secondhand apps.</span>
+        <span class="zc">送人 · 换娃 · 挂上二手平台</span>
+      </button>
+      <button class="zone" id="z4" data-zone="The Bin (Landfill)" aria-pressed="false">
+        <span class="badge">✓ SORTED</span>
+        <span class="zn">ZONE 04</span>
+        <span class="zt">The Bin<br>(Landfill)</span>
+        <span class="zd">Broken, lost, or tossed directly into plastic waste.</span>
+        <span class="zc">损坏 · 遗失 · 直接进了垃圾桶</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= STEP 4 ================= -->
+  <section class="step" id="s4">
+    <div class="step-head">
+      <h2><b>04</b> / Unboxing Confession</h2>
+      <p class="sub">Pick a prompt, then write the sentence you would not post online.</p>
+      <p class="sub-cn">选一个引导问题，写下你不会发到社交平台的那句话</p>
+    </div>
+
+    <div class="card">
+      <div class="prompts" id="prompts" role="group" aria-label="Choose a confession prompt">
+        <button class="prompt" data-p="Why did you really scan to pay in that split second?" aria-pressed="false">
+          Why did you really scan to pay in that split second?
+          <small>你到底为什么在那一秒刷卡付款？</small>
+        </button>
+        <button class="prompt" data-p="What went through your mind when you realized it wasn't what you wanted?" aria-pressed="false">
+          What went through your mind when you realized it wasn't what you wanted?
+          <small>当你发现没抽中想要的款式时，第一句内心独白是什么？</small>
+        </button>
+      </div>
+
+      <label class="fl" for="confess">Your Confession</label>
+      <textarea id="confess" maxlength="600" placeholder="Type freely. No one is grading the grammar."></textarea>
+      <div class="count" id="countRow"><span id="countTxt">0 / 600</span><span>MIN 10 CHARACTERS TO FILE</span></div>
+    </div>
+  </section>
+
+  <!-- ================= STEP 5 ================= -->
+  <section class="step" id="s5">
+    <div class="step-head">
+      <h2><b>05</b> / File It To The Archive</h2>
+      <p class="sub">Check the record, then file it. Nothing is uploaded anywhere.</p>
+      <p class="sub-cn">核对记录后归档，数据不会上传</p>
+    </div>
+
+    <div class="receipt" id="receipt"></div>
+
+    <button class="submit" id="submitBtn">[ SUBMIT TO UNBOXING ARCHIVE → ]</button>
+    <p class="legal">Nothing is uploaded. Your entry stays in this browser tab and disappears when you close it. The real archive is the board in front of you.</p>
+  </section>
+
+  <footer>
+    <span>THE UNBOXING LAB · PARTICIPATORY PROBE</span>
+    <span>NO DATA COLLECTED · NOTHING LEAVES YOUR DEVICE</span>
+  </footer>
+</div>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <p class="eyebrow" style="margin-bottom:0">Entry filed · thank you</p>
+    <h3 id="modalTitle">That Is Your Curve</h3>
+    <p id="modalLine"></p>
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="handoff" id="handoff"></div>
+    <div class="modal-actions">
+      <button class="mbtn ghost" id="copyBtn">COPY MY RECORD</button>
+      <button class="mbtn ghost" id="closeModal">CLOSE</button>
+      <button class="mbtn" id="againBtn">LOG ANOTHER CAPSULE</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var S = {opened:false, hit:null, zone:null, prompt:null};
+  var lastEntry = null;
+
+  /* ---------- helpers ---------- */
+  function $(id){ return document.getElementById(id); }
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function blip(){
+    if(reduce) return;
+    try{
+      var C = window.AudioContext || window.webkitAudioContext;
+      if(!C) return;
+      var ctx = new C(), o = ctx.createOscillator(), g = ctx.createGain();
+      o.type='triangle'; o.frequency.setValueAtTime(320,ctx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(880,ctx.currentTime+.12);
+      g.gain.setValueAtTime(.14,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+.42);
+      o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime+.44);
+    }catch(e){}
+  }
+  function buzz(ms){ if(navigator.vibrate && !reduce){ try{ navigator.vibrate(ms); }catch(e){} } }
+
+  /* ---------- progress ---------- */
+  function setStep(n, on){
+    var seg = $('p'+n);
+    if(!seg) return;
+    seg.classList.toggle('on', !!on);
+    var c = document.querySelectorAll('.rail-seg.on').length;
+    $('railCount').textContent = c + ' / 5';
+  }
+  function checkStep2(){
+    var ok = $('series').value.trim() !== '' && S.hit !== null;
+    setStep(2, ok);
+  }
+  function checkStep4(){
+    setStep(4, $('confess').value.trim().length >= 10);
+  }
+
+  /* ---------- STEP 1 ---------- */
+  var stage = $('stage'), capsule = $('capsule');
+  function spark(){
+    var rect = capsule.getBoundingClientRect(), sr = stage.getBoundingClientRect();
+    var cx = rect.left - sr.left + rect.width/2, cy = rect.top - sr.top + rect.height/2;
+    var colors = ['#FFD400','#FFB800','#FF2E88','#FFFFFF','#00E5B0'];
+    for(var i=0;i<26;i++){
+      var s = document.createElement('span');
+      s.className = 'spark';
+      s.style.background = colors[i % colors.length];
+      s.style.left = cx + 'px'; s.style.top = cy + 'px';
+      stage.appendChild(s);
+      var a = Math.random()*Math.PI*2, d = 60 + Math.random()*180;
+      if(s.animate){
+        var an = s.animate([
+          {transform:'translate(-50%,-50%) scale(1)', opacity:1},
+          {transform:'translate(' + (Math.cos(a)*d-6) + 'px,' + (Math.sin(a)*d-6) + 'px) scale(0)', opacity:0}
+        ], {duration: 700 + Math.random()*600, easing:'cubic-bezier(.15,.8,.3,1)'});
+        an.onfinish = function(node){ return function(){ node.remove(); }; }(s);
+      } else { setTimeout(function(node){ return function(){ node.remove(); }; }(s), 900); }
+    }
+  }
+  capsule.addEventListener('click', function(){
+    if(S.opened) return;
+    S.opened = true;
+    capsule.setAttribute('aria-pressed','true');
+    stage.classList.add('open');
+    blip(); buzz([18,40,26]);
+    if(!reduce) setTimeout(spark, 220);
+    $('tapHint').textContent = 'CAPSULE OPENED · RECORD IT BELOW';
+    setTimeout(function(){ $('revealNote').classList.add('show'); }, 420);
+    setStep(1, true);
+    setTimeout(function(){
+      $('s2').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'});
+    }, 1000);
+    updateReceipt();
+  });
+
+  /* ---------- STEP 2 ---------- */
+  var X = [105, 325, 545], TOP = 40, BOT = 228;
+  function yOf(v){ return BOT - ((v-1)/9) * (BOT-TOP); }
+
+  (function drawGrid(){
+    var g = $('grid'), out = '';
+    [10,7,4,1].forEach(function(v){
+      var y = yOf(v);
+      out += '<line x1="60" y1="'+y+'" x2="590" y2="'+y+'" stroke="#101014" stroke-opacity="'+(v===1?0:0.07)+'" stroke-width="1"/>';
+      out += '<text x="46" y="'+(y+4)+'" font-family="Space Mono, monospace" font-size="10" fill="#78828F" text-anchor="end">'+v+'</text>';
+    });
+    g.innerHTML = out;
+  })();
+
+  function vals(){ return [ +$('r1').value, +$('r2').value, +$('r3').value ]; }
+
+  function curvePath(v){
+    var p = 'M' + X[0] + ' ' + yOf(v[0]);
+    var c = (X[1]-X[0]) * 0.42;
+    p += ' C' + (X[0]+c) + ' ' + yOf(v[0]) + ',' + (X[1]-c) + ' ' + yOf(v[1]) + ',' + X[1] + ' ' + yOf(v[1]);
+    var c2 = (X[2]-X[1]) * 0.42;
+    p += ' C' + (X[1]+c2) + ' ' + yOf(v[1]) + ',' + (X[2]-c2) + ' ' + yOf(v[2]) + ',' + X[2] + ' ' + yOf(v[2]);
+    return p;
+  }
+
+  function updateChart(){
+    var v = vals();
+    $('v1').textContent = v[0]; $('v2').textContent = v[1]; $('v3').textContent = v[2];
+
+    for(var i=1;i<=3;i++){
+      var r = $('r'+i), pc = ((v[i-1]-1)/9)*100;
+      var col = i===1 ? '#FF2E88' : (i===2 ? '#FF8A00' : '#78828F');
+      r.style.setProperty('background','transparent');
+      r.style.setProperty('--fill', pc + '%');
+      r.style.backgroundImage = 'none';
+      r.style.setProperty('accent-color', col);
+    }
+    paintTracks(v);
+
+    var d = curvePath(v);
+    $('line').setAttribute('d', d);
+    $('area').setAttribute('d', d + ' L' + X[2] + ' ' + BOT + ' L' + X[0] + ' ' + BOT + ' Z');
+
+    var pts = '', cols = ['#FF2E88','#FF8A00','#78828F'];
+    for(var k=0;k<3;k++){
+      pts += '<circle cx="'+X[k]+'" cy="'+yOf(v[k])+'" r="9" fill="#fff" stroke="'+cols[k]+'" stroke-width="4"/>';
+      pts += '<text x="'+X[k]+'" y="'+(yOf(v[k])-19)+'" font-family="Space Mono, monospace" font-size="13" font-weight="700" fill="'+cols[k]+'" text-anchor="middle">'+v[k]+'</text>';
+    }
+    $('pts').innerHTML = pts;
+
+    var peak = Math.max(v[0], v[1]);
+    var drop = peak - v[2];
+    var out = $('decayOut');
+    if(drop > 0){
+      out.classList.remove('up');
+      out.innerHTML = 'DECAY FROM PEAK <b>-' + drop.toFixed(1) + '</b>';
+    } else if(drop === 0){
+      out.classList.remove('up');
+      out.innerHTML = 'HELD ITS VALUE <b>0.0</b>';
+    } else {
+      out.classList.add('up');
+      out.innerHTML = 'GREW ON YOU <b>+' + Math.abs(drop).toFixed(1) + '</b>';
+    }
+
+    var h = Math.max(0, drop) / 9 * 44;
+    $('residue').setAttribute('height', h.toFixed(1));
+    $('residueLabel').setAttribute('opacity', h > 6 ? '1' : '0');
+    $('residueLabel').setAttribute('y', (232 + h + 12).toFixed(1));
+
+    updateReceipt();
+  }
+
+  function paintTracks(v){
+    for(var i=1;i<=3;i++){
+      var pc = ((v[i-1]-1)/9)*100;
+      var col = i===1 ? '#FF2E88' : (i===2 ? '#FF8A00' : '#78828F');
+      $('r'+i).style.background = 'linear-gradient(90deg,' + col + ' ' + pc + '%,#D7DBE0 ' + pc + '%)';
+      $('r'+i).style.backgroundClip = 'content-box';
+    }
+  }
+
+  ['r1','r2','r3'].forEach(function(id){
+    $(id).addEventListener('input', function(){ updateChart(); buzz(6); });
+  });
+
+  $('series').addEventListener('input', function(){ checkStep2(); updateReceipt(); });
+  $('spend').addEventListener('input', function(){ updateReceipt(); });
+
+  function setHit(val){
+    S.hit = val;
+    $('hitYes').setAttribute('aria-pressed', val === 'yes' ? 'true' : 'false');
+    $('hitNo').setAttribute('aria-pressed', val === 'no' ? 'true' : 'false');
+    checkStep2(); updateReceipt(); buzz(10);
+  }
+  $('hitYes').addEventListener('click', function(){ setHit('yes'); });
+  $('hitNo').addEventListener('click', function(){ setHit('no'); });
+
+  /* ---------- STEP 3 ---------- */
+  var zoneEls = document.querySelectorAll('.zone');
+  Array.prototype.forEach.call(zoneEls, function(el){
+    el.addEventListener('click', function(){
+      Array.prototype.forEach.call(zoneEls, function(o){ o.setAttribute('aria-pressed','false'); });
+      el.setAttribute('aria-pressed','true');
+      $('zones').classList.add('picked');
+      S.zone = el.getAttribute('data-zone');
+      setStep(3, true); buzz([12,30,12]); updateReceipt();
+    });
+  });
+
+  /* ---------- STEP 4 ---------- */
+  var promptEls = document.querySelectorAll('.prompt');
+  Array.prototype.forEach.call(promptEls, function(el){
+    el.addEventListener('click', function(){
+      var already = el.getAttribute('aria-pressed') === 'true';
+      Array.prototype.forEach.call(promptEls, function(o){ o.setAttribute('aria-pressed','false'); });
+      if(already){ S.prompt = null; return; }
+      el.setAttribute('aria-pressed','true');
+      S.prompt = el.getAttribute('data-p');
+      $('confess').focus();
+    });
+  });
+  $('confess').addEventListener('input', function(){
+    var n = this.value.length;
+    $('countTxt').textContent = n + ' / 600';
+    $('countRow').classList.toggle('warn', n > 540);
+    checkStep4(); updateReceipt();
+  });
+
+  /* ---------- RECEIPT ---------- */
+  function updateReceipt(){
+    var v = vals();
+    var rows = [
+      ['CAPSULE OPENED', S.opened ? 'YES' : 'NOT YET'],
+      ['SERIES', $('series').value.trim() || '—'],
+      ['SPEND', $('spend').value.trim() || '—'],
+      ['HIT TARGET', S.hit === 'yes' ? 'JACKPOT' : (S.hit === 'no' ? 'UNWANTED' : '—')],
+      ['CURVE', v[0] + ' → ' + v[1] + ' → ' + v[2]],
+      ['RESTING PLACE', S.zone || '—'],
+      ['CONFESSION', $('confess').value.trim().length + ' CHARS']
+    ];
+    $('receipt').innerHTML = rows.map(function(r){
+      return '<div><span>' + r[0] + '</span><span>' + escapeHtml(r[1]) + '</span></div>';
+    }).join('');
+  }
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  /* ---------- STEP 5 ---------- */
+  var btn = $('submitBtn');
+  function flag(el){
+    el.classList.remove('err');
+    void el.offsetWidth;
+    el.classList.add('err');
+    el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+  }
+
+  btn.addEventListener('click', function(){
+    if(btn.classList.contains('done') || btn.disabled) return;
+
+    if(!S.opened){ flag($('stage')); return; }
+    if($('series').value.trim() === ''){ flag($('series')); $('series').focus(); return; }
+    if(S.hit === null){ flag($('hitYes').parentNode); return; }
+    if(!S.zone){ flag($('zones')); return; }
+    if($('confess').value.trim().length < 10){ flag($('confess')); $('confess').focus(); return; }
+
+    var v = vals();
+    var entry = {
+      t: Date.now(),
+      s: $('series').value.trim().slice(0,60),
+      m: $('spend').value.trim().slice(0,20),
+      hit: S.hit,
+      c: v,
+      z: S.zone,
+      p: S.prompt,
+      x: $('confess').value.trim().slice(0,600)
+    };
+
+    lastEntry = entry;
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btn.textContent = '[ LOGGING TO ARCHIVE… ]';
+
+    setTimeout(function(){
+      btn.classList.remove('loading');
+      btn.classList.add('done');
+      btn.textContent = '[ ✓ LOGGED INTO ARCHIVE ]';
+      setStep(5, true);
+      buzz([20,50,20,50,30]); blip();
+      openModal(entry);
+    }, 850);
+  });
+
+  /* ---------- MODAL ---------- */
+  function openModal(entry){
+    var peak = Math.max(entry.c[0], entry.c[1]);
+    var drop = peak - entry.c[2];
+    var pct = peak > 0 ? Math.round(Math.max(0,drop) / peak * 100) : 0;
+
+    $('modalLine').textContent = drop > 0
+      ? 'Your figure lost ' + pct + '% of its peak value within a day. That gap is the part no receipt records.'
+      : 'Your figure held or gained value after a day. Worth asking what made this one different.';
+
+    $('statGrid').innerHTML =
+      '<div class="stat"><b>' + (drop >= 0 ? '-' : '+') + Math.abs(drop).toFixed(1) + '</b><small>Points lost by day two</small></div>' +
+      '<div class="stat"><b>' + peak + '</b><small>Your peak</small></div>' +
+      '<div class="stat"><b>' + entry.c[2] + '</b><small>Worth 24h later</small></div>' +
+      '<div class="stat"><b>' + escapeHtml(entry.hit === 'yes' ? 'HIT' : 'MISS') + '</b><small>Your pull</small></div>';
+
+    $('handoff').innerHTML =
+      '<div class="ht">One thing left</div>' +
+      '<p>Write your confession on a card and post it into the <b>' + escapeHtml(entry.z) + '</b> pocket on the board. That board is the archive.</p>' +
+      '<p class="cn">把你的告白写在卡片上，投进展板上对应的口袋。展板才是真正的档案。</p>';
+
+    $('veil').classList.add('on');
+    $('closeModal').focus();
+  }
+
+  $('copyBtn').addEventListener('click', function(){
+    if(!lastEntry) return;
+    var t = 'THE UNBOXING LAB\n'
+      + 'Series: ' + (lastEntry.s || '-') + '\n'
+      + 'Spend: ' + (lastEntry.m || '-') + '\n'
+      + 'Pull: ' + (lastEntry.hit === 'yes' ? 'HIT' : 'MISS') + '\n'
+      + 'Curve: ' + lastEntry.c.join(' > ') + '\n'
+      + 'Resting place: ' + lastEntry.z + '\n'
+      + 'Confession: ' + lastEntry.x;
+    var btnEl = this;
+    function done(){ btnEl.textContent = 'COPIED'; setTimeout(function(){ btnEl.textContent = 'COPY MY RECORD'; }, 1800); }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      var ta = document.createElement('textarea');
+      ta.value = t; ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){}
+      ta.remove();
+    }
+  });
+  function closeModal(){ $('veil').classList.remove('on'); }
+  $('closeModal').addEventListener('click', closeModal);
+  $('veil').addEventListener('click', function(e){ if(e.target === $('veil')) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+
+  $('againBtn').addEventListener('click', function(){
+    closeModal();
+    S = {opened:false, hit:null, zone:null, prompt:null};
+    capsule.setAttribute('aria-pressed','false');
+    stage.classList.remove('open');
+    $('tapHint').textContent = 'TAP TO TEAR THE SEAL';
+    $('revealNote').classList.remove('show');
+    $('series').value = ''; $('spend').value = ''; $('confess').value = '';
+    $('countTxt').textContent = '0 / 600';
+    $('hitYes').setAttribute('aria-pressed','false');
+    $('hitNo').setAttribute('aria-pressed','false');
+    Array.prototype.forEach.call(zoneEls, function(o){ o.setAttribute('aria-pressed','false'); });
+    $('zones').classList.remove('picked');
+    Array.prototype.forEach.call(promptEls, function(o){ o.setAttribute('aria-pressed','false'); });
+    ['r1','r2','r3'].forEach(function(id){ $(id).value = 5; });
+    for(var i=1;i<=5;i++) setStep(i,false);
+    btn.disabled = false;
+    btn.className = 'submit';
+    btn.textContent = '[ SUBMIT TO UNBOXING ARCHIVE → ]';
+    updateChart();
+    document.getElementById('s1').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+  });
+
+  /* ---------- INIT ---------- */
+  updateChart();
+  updateReceipt();
+})();
+</script>
