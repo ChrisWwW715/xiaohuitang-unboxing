@@ -1,25 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>THE UNBOXING LAB — A Participatory Probe into Blind Box Consumption</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Inter+Tight:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 
 <style>
 /* ============ TOKENS ============ */
 :root{
-  --ink:#101014;
-  --paper:#F6F6F2;
-  --pink:#FF2E88;
-  --lemon:#FFD400;
-  --mint:#00E5B0;
-  --steel:#78828F;
-  --slate:#2A2F38;
-  --line:rgba(16,16,20,.14);
+  --ink:#5B4552;
+  --paper:#FFFBF8;
+  --pink:#FF8FB3;
+  --lemon:#FFC94D;
+  --mint:#86D28C;
+  --sky:#6FC6EE;
+  --steel:#8C7480;
+  --slate:#6B4A5E;
+  --line:rgba(91,69,82,.16);
 
-  --display:'Archivo','Helvetica Neue',Arial,sans-serif;
-  --body:'Inter Tight','Helvetica Neue',Arial,sans-serif;
-  --mono:'Space Mono',ui-monospace,Menlo,monospace;
+  --cream:#FEF6F7;
+  --butter:#FDFBD8;
+  --pistachio:#E8F4BA;
+  --skytint:#E3F5FD;
+
+  --display:'Baloo 2','Helvetica Neue',Arial,sans-serif;
+  --body:'Nunito','Helvetica Neue',Arial,sans-serif;
+  --mono:var(--body);
 
   --accent:var(--pink);
   --pad:clamp(18px,5vw,44px);
@@ -31,8 +40,8 @@ body{
   margin:0;
   font-family:var(--body);
   color:var(--ink);
-  background:#E9EBEE;
-  background-image:linear-gradient(180deg,#FFEEF6 0%,#FFF8DF 16%,#F0F6F2 42%,#E6E9EC 66%,#D9DDE2 84%,#CFD4DA 100%);
+  background:#FDF3F1;
+  background-image:linear-gradient(180deg,#FEF6F7 0%,#FDFBD8 32%,#E8F4BA 64%,#E3F5FD 100%);
   background-attachment:fixed;
   line-height:1.5;
   overflow-x:hidden;
@@ -45,7 +54,7 @@ body{
 .rail{
   position:sticky;top:0;z-index:60;
   backdrop-filter:blur(14px);
-  background:rgba(246,246,242,.72);
+  background:rgba(255,251,248,.72);
   border-bottom:1px solid var(--line);
 }
 .rail-in{
@@ -80,18 +89,18 @@ body{
 }
 .hero h1{
   font-family:var(--display);
-  font-variation-settings:'wdth' 118,'wght' 850;
+  font-weight:800;
   font-size:clamp(40px,10.5vw,96px);
   line-height:.92;letter-spacing:-.025em;
   margin:0;text-transform:uppercase;
 }
 .hero h1 .drop{
   display:block;
-  background:linear-gradient(96deg,var(--pink) 0%,#FF7A2F 38%,var(--lemon) 68%,var(--steel) 100%);
+  background:linear-gradient(96deg,var(--pink) 0%,var(--lemon) 38%,var(--mint) 68%,var(--sky) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .hero p.lede{
-  margin:26px 0 0;max-width:56ch;font-size:clamp(15px,2.1vw,18px);color:#3A3F48;
+  margin:26px 0 0;max-width:56ch;font-size:clamp(15px,2.1vw,18px);color:#6B5760;
 }
 .hero .cn{
   margin:10px 0 0;max-width:44ch;font-size:13px;color:var(--steel);
@@ -107,16 +116,16 @@ body{
 .step-head{margin-bottom:clamp(20px,4vw,34px)}
 .step h2{
   font-family:var(--display);
-  font-variation-settings:'wdth' 108,'wght' 800;
+  font-weight:700;
   font-size:clamp(22px,4.6vw,38px);
   line-height:1.02;letter-spacing:-.015em;margin:0;text-transform:uppercase;
 }
 .step h2 b{color:var(--accent);font-weight:inherit}
-.step .sub{margin:12px 0 0;color:#42474F;max-width:54ch;font-size:15px}
+.step .sub{margin:12px 0 0;color:#6B5760;max-width:54ch;font-size:15px}
 .step .sub-cn{margin:5px 0 0;color:var(--steel);font-size:12.5px;font-family:var(--mono)}
 
 #s1{--accent:var(--pink)}
-#s2{--accent:#FF8A00}
+#s2{--accent:var(--lemon)}
 #s3{--accent:var(--mint)}
 #s4{--accent:var(--steel)}
 #s5{--accent:var(--ink)}
@@ -127,14 +136,15 @@ body{
   display:grid;place-items:center;
   border-radius:28px;
   background:
-    radial-gradient(120% 90% at 50% 12%,rgba(255,46,136,.16),transparent 62%),
-    linear-gradient(180deg,#FFFFFF 0%,#FFF3F8 100%);
-  border:1px solid rgba(255,46,136,.2);
+    radial-gradient(120% 90% at 50% 8%,color-mix(in srgb,var(--flavor-deep,var(--pink)) 16%,transparent),transparent 62%),
+    var(--flavor-waffle,var(--cream));
+  border:1px solid color-mix(in srgb,var(--flavor-deep,var(--pink)) 30%,transparent);
   overflow:hidden;
+  transition:background .5s ease,border-color .5s ease;
 }
 .stage::after{
-  content:'';position:absolute;left:0;right:0;bottom:0;height:34%;
-  background:linear-gradient(180deg,transparent,rgba(255,46,136,.07));
+  content:'';position:absolute;left:0;right:0;bottom:0;height:30%;
+  background:linear-gradient(180deg,transparent,rgba(91,69,82,.06));
   pointer-events:none;
 }
 .scene{perspective:900px;position:relative;z-index:2}
@@ -150,24 +160,41 @@ body{
   50%{transform:rotate(2.2deg) translateY(-9px)}
 }
 .box-body{
-  position:relative;height:clamp(148px,38vw,190px);border-radius:16px;
-  background:linear-gradient(150deg,#FF4E9C 0%,#FF2E88 46%,#E2126D 100%);
-  box-shadow:0 26px 44px -16px rgba(226,18,109,.55),inset -14px 0 26px -14px rgba(0,0,0,.35),inset 14px 0 22px -16px rgba(255,255,255,.6);
+  position:relative;height:clamp(148px,38vw,190px);border-radius:14px;
+  background:linear-gradient(150deg,
+    color-mix(in srgb,var(--flavor-deep,var(--pink)) 82%,white 18%) 0%,
+    var(--flavor-deep,var(--pink)) 46%,
+    color-mix(in srgb,var(--flavor-deep,var(--pink)) 80%,black 16%) 100%);
+  box-shadow:0 26px 44px -16px color-mix(in srgb,var(--flavor-deep,var(--pink)) 65%,transparent),inset -14px 0 26px -14px rgba(0,0,0,.3),inset 14px 0 22px -16px rgba(255,255,255,.55);
   display:grid;place-items:center;
+  overflow:hidden;
+  transition:background .5s ease,box-shadow .5s ease;
 }
 .box-body::before{
-  content:'';position:absolute;left:0;right:0;top:46%;height:2px;
-  background:repeating-linear-gradient(90deg,rgba(255,255,255,.85) 0 7px,transparent 7px 14px);
-  opacity:.55;
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.16) 0 1.5px,transparent 1.5px 13px),
+    repeating-linear-gradient(-45deg,rgba(255,255,255,.16) 0 1.5px,transparent 1.5px 13px);
+}
+.box-drip{
+  position:absolute;left:-3px;right:-3px;top:0;height:32%;
+  border-radius:14px 14px 0 0;
+  background:var(--paper);
+  -webkit-mask-image:radial-gradient(circle at 8px 100%,transparent 7px,#000 8px);
+  -webkit-mask-size:16px 14px;-webkit-mask-repeat:repeat-x;-webkit-mask-position:bottom;
+  mask-image:radial-gradient(circle at 8px 100%,transparent 7px,#000 8px);
+  mask-size:16px 14px;mask-repeat:repeat-x;mask-position:bottom;
+  filter:drop-shadow(0 3px 3px rgba(91,69,82,.16));
 }
 .box-mark{
-  font-family:var(--display);font-variation-settings:'wdth' 118,'wght' 900;
+  position:relative;z-index:1;
+  font-family:var(--display);font-weight:800;
   font-size:clamp(46px,12vw,62px);color:rgba(255,255,255,.94);
   text-shadow:0 2px 0 rgba(0,0,0,.15);line-height:1;
 }
 .box-lid{
   position:absolute;left:-5px;right:-5px;top:-24px;height:34px;border-radius:12px;
-  background:linear-gradient(180deg,#FFE066 0%,#FFD400 55%,#E9B800 100%);
+  background:linear-gradient(180deg,#FFEBAF 0%,var(--lemon) 55%,#E3A93E 100%);
   box-shadow:0 10px 18px -8px rgba(0,0,0,.4);
   transform-origin:50% 100%;
   transition:transform .6s cubic-bezier(.3,1.5,.4,1),opacity .5s ease;
@@ -187,11 +214,11 @@ body{
   position:absolute;left:50%;bottom:42%;width:110px;margin-left:-55px;
   opacity:0;transform:translateY(28px) scale(.7);
   transition:opacity .5s ease .18s,transform .7s cubic-bezier(.2,1.4,.35,1) .18s;
-  pointer-events:none;
+  pointer-events:none;z-index:2;
 }
 .stage.open .figure{opacity:1;transform:translateY(-22px) scale(1)}
 .tap-hint{
-  position:absolute;bottom:20px;left:0;right:0;text-align:center;
+  position:absolute;bottom:20px;left:0;right:0;text-align:center;z-index:2;
   font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--pink);
   text-transform:uppercase;
 }
@@ -200,7 +227,7 @@ body{
 
 .reveal-note{
   margin-top:22px;padding:16px 18px;border-radius:14px;
-  border:1px dashed rgba(255,46,136,.4);background:rgba(255,255,255,.6);
+  border:1px dashed rgba(255,143,179,.45);background:rgba(255,255,255,.6);
   font-family:var(--mono);font-size:13px;color:var(--ink);
   opacity:0;transform:translateY(8px);transition:.5s ease;
 }
@@ -243,8 +270,7 @@ input[type=text]:focus,textarea:focus{
 .slider-row{padding:18px 0;border-bottom:1px solid var(--line)}
 .slider-row:last-of-type{border-bottom:0;padding-bottom:4px}
 .slider-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.slider-name{font-family:var(--display);font-variation-settings:'wdth' 100,'wght' 700;font-size:16px;letter-spacing:-.01em}
-.slider-when{font-family:var(--mono);font-size:10.5px;color:var(--steel);letter-spacing:.1em}
+.slider-name{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:-.01em}
 .slider-val{
   font-family:var(--mono);font-weight:700;font-size:22px;
   min-width:2.6ch;text-align:right;
@@ -271,7 +297,7 @@ input[type=range]::-moz-range-thumb{
   width:20px;height:20px;border-radius:99px;background:#fff;
   border:4px solid var(--dot,var(--pink));box-shadow:0 4px 12px -3px rgba(0,0,0,.35);
 }
-#r1{--dot:var(--pink)} #r2{--dot:#FF8A00} #r3{--dot:var(--steel)}
+#r1{--dot:var(--pink)} #r2{--dot:var(--lemon)} #r3{--dot:var(--sky)}
 
 /* ============ CHART ============ */
 .chartbox{
@@ -309,9 +335,8 @@ svg.traj{display:block;width:100%;height:auto}
 }
 .zone:hover{transform:translateY(-4px);box-shadow:0 18px 30px -20px rgba(16,16,20,.7)}
 .zone .zn{font-family:var(--mono);font-size:10px;letter-spacing:.18em;opacity:.62;display:block;margin-bottom:9px}
-.zone .zt{font-family:var(--display);font-variation-settings:'wdth' 106,'wght' 800;font-size:19px;letter-spacing:-.01em;text-transform:uppercase;display:block}
+.zone .zt{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;text-transform:uppercase;display:block}
 .zone .zd{font-size:13.2px;margin-top:8px;opacity:.78;line-height:1.42}
-.zone .zc{font-family:var(--mono);font-size:11px;margin-top:9px;opacity:.55}
 .zone .badge{
   position:absolute;top:12px;right:12px;
   font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
@@ -325,11 +350,11 @@ svg.traj{display:block;width:100%;height:auto}
 }
 .zone[aria-pressed="true"] .badge{opacity:1;transform:none}
 .zones.picked .zone:not([aria-pressed="true"]){opacity:.42;filter:saturate(.35)}
-#z1{--zbg:#E7E4F2;--zfg:#332C4A}
-#z2{--zbg:#EFEBE2;--zfg:#4A4437}
-#z3{--zbg:#D9F7EE;--zfg:#0B4738}
-#z4{--zbg:#2A2F38;--zfg:#DDE1E6}
-#z4 .badge{background:#fff;color:#151A20}
+#z1{--zbg:#EDEAF7;--zfg:#3B2E45}
+#z2{--zbg:#FBF3DE;--zfg:#5C4A2E}
+#z3{--zbg:#DFF3D2;--zfg:#1F4A2E}
+#z4{--zbg:var(--slate);--zfg:#F7E9EE}
+#z4 .badge{background:#fff;color:#4A2E3C}
 
 /* ============ STEP 4 — CONFESSION ============ */
 .prompts{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
@@ -339,9 +364,7 @@ svg.traj{display:block;width:100%;height:auto}
   color:var(--ink);font-size:14.6px;line-height:1.45;
 }
 .prompt:hover{border-color:var(--ink);transform:translateX(3px)}
-.prompt small{display:block;font-family:var(--mono);font-size:11px;color:var(--steel);margin-top:5px}
 .prompt[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.prompt[aria-pressed="true"] small{color:rgba(255,255,255,.62)}
 textarea{min-height:170px;resize:vertical;line-height:1.55}
 .count{
   display:flex;justify-content:space-between;margin-top:8px;
@@ -351,7 +374,7 @@ textarea{min-height:170px;resize:vertical;line-height:1.55}
 
 /* ============ STEP 5 — SUBMIT ============ */
 .receipt{
-  font-family:var(--mono);font-size:12px;color:#3A3F48;
+  font-family:var(--mono);font-size:12px;color:#6B5760;
   border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.6);
   padding:16px 18px;margin-bottom:20px;
 }
@@ -367,7 +390,7 @@ textarea{min-height:170px;resize:vertical;line-height:1.55}
 .submit:hover{transform:translateY(-2px)}
 .submit:disabled{cursor:not-allowed;transform:none}
 .submit.loading{background:var(--steel)}
-.submit.done{background:#00A97A;color:#fff}
+.submit.done{background:#5FAE72;color:#fff}
 .legal{margin-top:12px;font-family:var(--mono);font-size:10.5px;color:var(--steel);line-height:1.6}
 
 /* ============ MODAL ============ */
@@ -385,10 +408,10 @@ textarea{min-height:170px;resize:vertical;line-height:1.55}
 }
 .veil.on .modal{transform:none}
 .modal h3{
-  font-family:var(--display);font-variation-settings:'wdth' 112,'wght' 850;
+  font-family:var(--display);font-weight:800;
   font-size:clamp(23px,5.4vw,32px);margin:14px 0 10px;text-transform:uppercase;line-height:1.02;
 }
-.modal p{font-size:14.5px;color:#3A3F48;margin:0 0 8px}
+.modal p{font-size:14.5px;color:#6B5760;margin:0 0 8px}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 4px}
 .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px}
 .stat b{display:block;font-family:var(--mono);font-size:22px;line-height:1.1}
@@ -430,6 +453,8 @@ footer{
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.06s!important}
 }
 </style>
+</head>
+<body>
 
 <div class="rail">
   <div class="rail-in">
@@ -448,9 +473,9 @@ footer{
 <div class="wrap">
 
   <header class="hero">
-    <p class="eyebrow">Participatory Design Probe · Field Instrument No.1</p>
+    <p class="eyebrow">Participatory Design Probe</p>
     <h1>The Unboxing<br><span class="drop">Lab</span></h1>
-    <p class="lede">A five-minute probe into what happens between the thrill of tearing the foil and the shelf where the figure ends up. Log one blind box you have actually opened.</p>
+    <p class="lede">Log one blind box you've actually opened — from the tear to the shelf.</p>
     <p class="scroll-hint"><i></i> START WITH THE BOX</p>
   </header>
 
@@ -458,13 +483,14 @@ footer{
   <section class="step" id="s1">
     <div class="step-head">
       <h2><b>01</b> / Unpack Your Capsule</h2>
-      <p class="sub">Tap the mystery box to start the unboxing inquiry.</p>
+      <p class="sub">Tap the box to begin.</p>
     </div>
 
     <div class="stage" id="stage">
       <div class="scene">
         <button class="capsule" id="capsule" aria-pressed="false" aria-label="Open the mystery box">
           <div class="box-body">
+            <div class="box-drip" aria-hidden="true"></div>
             <div class="box-mark">?</div>
             <div class="box-lid"></div>
             <div class="foil"></div>
@@ -472,10 +498,10 @@ footer{
         </button>
       </div>
       <svg class="figure" viewBox="0 0 100 130" aria-hidden="true">
-        <g fill="none" stroke="#101014" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+        <g fill="none" stroke="#5B4552" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
           <path d="M50 8c-17 0-27 12-27 27 0 10 4 17 9 21h36c5-4 9-11 9-21C77 20 67 8 50 8z" fill="rgba(255,255,255,.85)"/>
-          <circle cx="39" cy="34" r="3.2" fill="#101014"/>
-          <circle cx="61" cy="34" r="3.2" fill="#101014"/>
+          <circle cx="39" cy="34" r="3.2" fill="#5B4552"/>
+          <circle cx="61" cy="34" r="3.2" fill="#5B4552"/>
           <path d="M44 44c3 3 9 3 12 0"/>
           <path d="M34 58h32c6 0 10 5 10 11v30c0 6-4 10-10 10H34c-6 0-10-4-10-10V69c0-6 4-11 10-11z" fill="rgba(255,255,255,.85)"/>
           <path d="M24 74c-6 1-9 6-9 12s3 10 9 11M76 74c6 1 9 6 9 12s-3 10-9 11"/>
@@ -486,7 +512,7 @@ footer{
     </div>
 
     <div class="reveal-note" id="revealNote">
-      <em>Box unveiled.</em> What did you feel the moment you pulled it? Keep that feeling — you will need it for the next three sliders.
+      <em>Box unveiled.</em> Hold that feeling — the next three sliders need it.
     </div>
   </section>
 
@@ -494,7 +520,7 @@ footer{
   <section class="step" id="s2">
     <div class="step-head">
       <h2><b>02</b> / Trace Your Dopamine</h2>
-      <p class="sub">Rate the same purchase at three moments. The curve below redraws as you drag.</p>
+      <p class="sub">Rate the same purchase at three moments — the curve redraws as you drag.</p>
     </div>
 
     <div class="card">
@@ -522,7 +548,6 @@ footer{
           <div class="slider-top">
             <div>
               <div class="slider-name">Pre-Unbox Hype</div>
-              <div class="slider-when">BEFORE PAYING AND BEFORE TEARING</div>
             </div>
             <div class="slider-val" id="v1">5</div>
           </div>
@@ -534,7 +559,6 @@ footer{
           <div class="slider-top">
             <div>
               <div class="slider-name">Instant Reveal Peak</div>
-              <div class="slider-when">THE SECOND THE FOIL SPLITS</div>
             </div>
             <div class="slider-val" id="v2">5</div>
           </div>
@@ -546,7 +570,6 @@ footer{
           <div class="slider-top">
             <div>
               <div class="slider-name">24 Hours Later</div>
-              <div class="slider-when">ONCE THE HIGH SETTLES</div>
             </div>
             <div class="slider-val" id="v3">5</div>
           </div>
@@ -563,38 +586,38 @@ footer{
         <svg class="traj" id="traj" viewBox="0 0 620 300" role="img" aria-label="Dopamine trajectory chart">
           <defs>
             <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#FF2E88"/>
-              <stop offset="48%" stop-color="#FF8A00"/>
-              <stop offset="100%" stop-color="#78828F"/>
+              <stop offset="0%" stop-color="#FF8FB3"/>
+              <stop offset="48%" stop-color="#FFC94D"/>
+              <stop offset="100%" stop-color="#6FC6EE"/>
             </linearGradient>
             <linearGradient id="fillGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FF2E88" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#78828F" stop-opacity=".02"/>
+              <stop offset="0%" stop-color="#FF8FB3" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#6FC6EE" stop-opacity=".02"/>
             </linearGradient>
             <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-              <line x1="0" y1="0" x2="0" y2="8" stroke="#78828F" stroke-width="3" opacity=".45"/>
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#8C7480" stroke-width="3" opacity=".45"/>
             </pattern>
           </defs>
 
           <g id="grid"></g>
-          <line x1="60" y1="228" x2="590" y2="228" stroke="#101014" stroke-opacity=".28" stroke-width="1"/>
+          <line x1="60" y1="228" x2="590" y2="228" stroke="#5B4552" stroke-opacity=".28" stroke-width="1"/>
 
           <rect id="residue" x="60" y="230" width="530" height="0" fill="url(#hatch)"/>
-          <text id="residueLabel" x="66" y="248" font-family="Space Mono, monospace" font-size="10" fill="#78828F" letter-spacing="1.4" opacity="0">PLASTIC RESIDUE — VALUE LOST AFTER 24H</text>
+          <text id="residueLabel" x="66" y="248" font-family="Nunito, sans-serif" font-size="10" fill="#8C7480" letter-spacing="1.4" opacity="0">PLASTIC RESIDUE — VALUE LOST AFTER 24H</text>
 
           <path id="area" fill="url(#fillGrad)" d=""/>
           <path id="line" fill="none" stroke="url(#lineGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d=""/>
 
           <g id="pts"></g>
-          <g id="xlabels" font-family="Space Mono, monospace" font-size="11" fill="#78828F" text-anchor="middle" letter-spacing="1.2">
+          <g id="xlabels" font-family="Nunito, sans-serif" font-size="11" fill="#8C7480" text-anchor="middle" letter-spacing="1.2">
             <text x="105" y="266">PRE-UNBOX</text>
             <text x="325" y="266">REVEAL PEAK</text>
             <text x="545" y="266">+24 HOURS</text>
           </g>
         </svg>
         <div class="chart-foot">
-          <span class="key"><i style="background:linear-gradient(90deg,#FF2E88,#78828F)"></i> YOUR CURVE</span>
-          <span class="key"><i style="background:repeating-linear-gradient(45deg,#78828F 0 3px,transparent 3px 6px)"></i> VALUE LOST AFTER 24H</span>
+          <span class="key"><i style="background:linear-gradient(90deg,#FF8FB3,#6FC6EE)"></i> YOUR CURVE</span>
+          <span class="key"><i style="background:repeating-linear-gradient(45deg,#8C7480 0 3px,transparent 3px 6px)"></i> VALUE LOST AFTER 24H</span>
         </div>
       </div>
     </div>
@@ -604,7 +627,7 @@ footer{
   <section class="step" id="s3">
     <div class="step-head">
       <h2><b>03</b> / Sort It Into A Pocket</h2>
-      <p class="sub">Where is your unwanted or duplicate figure resting right now? Pick the one pocket that is honest.</p>
+      <p class="sub">Where does your unwanted figure actually rest? Pick the honest pocket.</p>
     </div>
 
     <div class="zones" id="zones" role="group" aria-label="Choose where the figure rests">
@@ -612,29 +635,25 @@ footer{
         <span class="badge">✓ SORTED</span>
         <span class="zn">ZONE 01</span>
         <span class="zt">The Drawer<br>(Limbo)</span>
-        <span class="zd">Hidden away in storage boxes, dark closets, or under desks.</span>
-        <span class="zc">OUT OF SIGHT · STILL OWNED</span>
+        <span class="zd">Storage boxes, dark closets, under the desk.</span>
       </button>
       <button class="zone" id="z2" data-zone="Dust Collector" aria-pressed="false">
         <span class="badge">✓ SORTED</span>
         <span class="zn">ZONE 02</span>
         <span class="zt">Dust<br>Collector</span>
-        <span class="zd">Sitting on a display shelf, but completely forgotten or ignored.</span>
-        <span class="zc">ON DISPLAY · NEVER LOOKED AT</span>
+        <span class="zd">On the shelf, but forgotten.</span>
       </button>
       <button class="zone" id="z3" data-zone="Passed Along" aria-pressed="false">
         <span class="badge">✓ SORTED</span>
         <span class="zn">ZONE 03</span>
         <span class="zt">Passed<br>Along</span>
-        <span class="zd">Gifted to friends, traded, or dumped onto secondhand apps.</span>
-        <span class="zc">GIFTED · TRADED · RESOLD</span>
+        <span class="zd">Gifted, traded, or resold.</span>
       </button>
       <button class="zone" id="z4" data-zone="The Bin (Landfill)" aria-pressed="false">
         <span class="badge">✓ SORTED</span>
         <span class="zn">ZONE 04</span>
         <span class="zt">The Bin<br>(Landfill)</span>
-        <span class="zd">Broken, lost, or tossed directly into plastic waste.</span>
-        <span class="zc">BROKEN · LOST · BINNED</span>
+        <span class="zd">Broken, lost, or binned.</span>
       </button>
     </div>
   </section>
@@ -643,23 +662,21 @@ footer{
   <section class="step" id="s4">
     <div class="step-head">
       <h2><b>04</b> / Unboxing Confession</h2>
-      <p class="sub">Pick a prompt, then write the sentence you would not post online.</p>
+      <p class="sub">Pick a prompt, then write what you wouldn't post.</p>
     </div>
 
     <div class="card">
       <div class="prompts" id="prompts" role="group" aria-label="Choose a confession prompt">
         <button class="prompt" data-p="Why did you really scan to pay in that split second?" aria-pressed="false">
           Why did you really scan to pay in that split second?
-          <small>THE MOMENT OF PAYMENT</small>
         </button>
         <button class="prompt" data-p="What went through your mind when you realized it wasn't what you wanted?" aria-pressed="false">
           What went through your mind when you realized it wasn't what you wanted?
-          <small>THE MOMENT OF THE MISS</small>
         </button>
       </div>
 
       <label class="fl" for="confess">Your Confession</label>
-      <textarea id="confess" maxlength="600" placeholder="Type freely. No one is grading the grammar."></textarea>
+      <textarea id="confess" maxlength="600" placeholder="Type freely."></textarea>
       <div class="count" id="countRow"><span id="countTxt">0 / 600</span><span>MIN 10 CHARACTERS TO FILE</span></div>
     </div>
   </section>
@@ -668,18 +685,18 @@ footer{
   <section class="step" id="s5">
     <div class="step-head">
       <h2><b>05</b> / File It To The Archive</h2>
-      <p class="sub">Check the record, then file it. Nothing is uploaded anywhere.</p>
+      <p class="sub">Check the record, then file it.</p>
     </div>
 
     <div class="receipt" id="receipt"></div>
 
     <button class="submit" id="submitBtn">[ SUBMIT TO UNBOXING ARCHIVE → ]</button>
-    <p class="legal">Nothing is uploaded. Your entry stays in this browser tab and disappears when you close it. The real archive is the board in front of you.</p>
+    <p class="legal">Stays in this tab, gone when you close it. The real archive is the board in front of you.</p>
   </section>
 
   <footer>
     <span>THE UNBOXING LAB · PARTICIPATORY PROBE</span>
-    <span>NO DATA COLLECTED · NOTHING LEAVES YOUR DEVICE</span>
+    <span>NOTHING LEAVES YOUR DEVICE</span>
   </footer>
 </div>
 
@@ -742,10 +759,24 @@ footer{
 
   /* ---------- STEP 1 ---------- */
   var stage = $('stage'), capsule = $('capsule');
+
+  var FLAVORS = [
+    {waffle:'#E3F5FD', deep:'#6FC6EE'},
+    {waffle:'#FEF6F7', deep:'#FF8FB3'},
+    {waffle:'#FDFBD8', deep:'#FFC94D'},
+    {waffle:'#E8F4BA', deep:'#86D28C'}
+  ];
+  function applyFlavor(){
+    var f = FLAVORS[Math.floor(Math.random() * FLAVORS.length)];
+    stage.style.setProperty('--flavor-waffle', f.waffle);
+    stage.style.setProperty('--flavor-deep', f.deep);
+  }
+  applyFlavor();
+
   function spark(){
     var rect = capsule.getBoundingClientRect(), sr = stage.getBoundingClientRect();
     var cx = rect.left - sr.left + rect.width/2, cy = rect.top - sr.top + rect.height/2;
-    var colors = ['#FFD400','#FFB800','#FF2E88','#FFFFFF','#00E5B0'];
+    var colors = ['#FFC94D','#FFE39B','#FF8FB3','#FFFFFF','#86D28C'];
     for(var i=0;i<26;i++){
       var s = document.createElement('span');
       s.className = 'spark';
@@ -786,8 +817,8 @@ footer{
     var g = $('grid'), out = '';
     [10,7,4,1].forEach(function(v){
       var y = yOf(v);
-      out += '<line x1="60" y1="'+y+'" x2="590" y2="'+y+'" stroke="#101014" stroke-opacity="'+(v===1?0:0.07)+'" stroke-width="1"/>';
-      out += '<text x="46" y="'+(y+4)+'" font-family="Space Mono, monospace" font-size="10" fill="#78828F" text-anchor="end">'+v+'</text>';
+      out += '<line x1="60" y1="'+y+'" x2="590" y2="'+y+'" stroke="#5B4552" stroke-opacity="'+(v===1?0:0.07)+'" stroke-width="1"/>';
+      out += '<text x="46" y="'+(y+4)+'" font-family="Nunito, sans-serif" font-size="10" fill="#8C7480" text-anchor="end">'+v+'</text>';
     });
     g.innerHTML = out;
   })();
@@ -809,7 +840,7 @@ footer{
 
     for(var i=1;i<=3;i++){
       var r = $('r'+i), pc = ((v[i-1]-1)/9)*100;
-      var col = i===1 ? '#FF2E88' : (i===2 ? '#FF8A00' : '#78828F');
+      var col = i===1 ? '#FF8FB3' : (i===2 ? '#FFC94D' : '#6FC6EE');
       r.style.setProperty('background','transparent');
       r.style.setProperty('--fill', pc + '%');
       r.style.backgroundImage = 'none';
@@ -821,10 +852,10 @@ footer{
     $('line').setAttribute('d', d);
     $('area').setAttribute('d', d + ' L' + X[2] + ' ' + BOT + ' L' + X[0] + ' ' + BOT + ' Z');
 
-    var pts = '', cols = ['#FF2E88','#FF8A00','#78828F'];
+    var pts = '', cols = ['#FF8FB3','#FFC94D','#6FC6EE'];
     for(var k=0;k<3;k++){
       pts += '<circle cx="'+X[k]+'" cy="'+yOf(v[k])+'" r="9" fill="#fff" stroke="'+cols[k]+'" stroke-width="4"/>';
-      pts += '<text x="'+X[k]+'" y="'+(yOf(v[k])-19)+'" font-family="Space Mono, monospace" font-size="13" font-weight="700" fill="'+cols[k]+'" text-anchor="middle">'+v[k]+'</text>';
+      pts += '<text x="'+X[k]+'" y="'+(yOf(v[k])-19)+'" font-family="Nunito, sans-serif" font-size="13" font-weight="700" fill="'+cols[k]+'" text-anchor="middle">'+v[k]+'</text>';
     }
     $('pts').innerHTML = pts;
 
@@ -853,7 +884,7 @@ footer{
   function paintTracks(v){
     for(var i=1;i<=3;i++){
       var pc = ((v[i-1]-1)/9)*100;
-      var col = i===1 ? '#FF2E88' : (i===2 ? '#FF8A00' : '#78828F');
+      var col = i===1 ? '#FF8FB3' : (i===2 ? '#FFC94D' : '#6FC6EE');
       $('r'+i).style.background = 'linear-gradient(90deg,' + col + ' ' + pc + '%,#D7DBE0 ' + pc + '%)';
       $('r'+i).style.backgroundClip = 'content-box';
     }
@@ -980,8 +1011,8 @@ footer{
     var pct = peak > 0 ? Math.round(Math.max(0,drop) / peak * 100) : 0;
 
     $('modalLine').textContent = drop > 0
-      ? 'Your figure lost ' + pct + '% of its peak value within a day. That gap is the part no receipt records.'
-      : 'Your figure held or gained value after a day. Worth asking what made this one different.';
+      ? 'Lost ' + pct + '% of its peak value within a day.'
+      : 'Held or gained value after a day — what made this one different?';
 
     $('statGrid').innerHTML =
       '<div class="stat"><b>' + (drop >= 0 ? '-' : '+') + Math.abs(drop).toFixed(1) + '</b><small>Points lost by day two</small></div>' +
@@ -991,7 +1022,7 @@ footer{
 
     $('handoff').innerHTML =
       '<div class="ht">One thing left</div>' +
-      '<p>Write your confession on a card and post it into the <b>' + escapeHtml(entry.z) + '</b> pocket on the board. That board is the archive.</p>';
+      '<p>Post your confession card into the <b>' + escapeHtml(entry.z) + '</b> pocket. That\'s the real archive.</p>';
 
     $('veil').classList.add('on');
     $('closeModal').focus();
@@ -1027,6 +1058,7 @@ footer{
   $('againBtn').addEventListener('click', function(){
     closeModal();
     S = {opened:false, hit:null, zone:null, prompt:null};
+    applyFlavor();
     capsule.setAttribute('aria-pressed','false');
     stage.classList.remove('open');
     $('tapHint').textContent = 'TAP TO TEAR THE SEAL';
@@ -1052,3 +1084,5 @@ footer{
   updateReceipt();
 })();
 </script>
+</body>
+</html>
